@@ -1,12 +1,45 @@
-const id1 = null;
-const id2 = 5;
-const id3 = "2";
+// Перетворення (приведення) типу даних
 
-let result1 = id2 + id3;
-console.log(result1);
+// Перетворення типу даних - значення змінює тип даних з одного на інший
+// Існує 2 типи перетворення даних: явне і неявне
 
-let result2 = id3 - id2;
-console.log(result2);
+// Неявне перетворення типів (implicit type convertion)
+let num = 6 - '1';
+console.log(num);
 
-let result3 = id1 + id2;
-console.log(result3);
+// Явне перетворення типів (explicit type convertion)
+// (приведення типів)
+
+let thisIsNumber = Number('45');
+
+// Boolean автоматично (неявно) приводиться до типу Numer при арифметичних розразунках
+// true -> 1
+// false -> 0
+
+let booleanNuumber = true + 1; // 1 + 1 = 2
+console.log(booleanNuumber);
+
+// String
+
+let thisIsString = String(45); // '45'
+console.log(thisIsString);
+
+let testString = null + ''; // невне перетворення типу до string
+console.log(testString);
+
+// Явне перетворення типів краще за неявне
+
+let test = 15 - Number('17');
+console.log(test);
+
+// Nan - Not-a-Number
+let notANumber = 2 * "Hello"; // приведення типів неможливе -> некоректна математична операція -> Nah 
+console.log(notANumber);
+
+// () - оператор виклику функції 
+// математичні оператори (+, - , *, /)
+// оператор конкатенції
+
+// оператор typeof - доволяє отимати тип даних операнда
+let box = true;
+console.log(typeof box);
