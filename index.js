@@ -1,52 +1,55 @@
-// Функціїї (Functions)
-// Функція (підпрограма - старі мови програмування) - блок коду, який виконує певні дії при виклику.
-// Функція може приймати аргументи - значення, які передаються у фунцію.
-// Функція може використовувати аргументи у своїй роботі.
-// Фукнція може повертати значення (або не повертати).
-// Функція - фрагмент програмного коду, до якого можна звернутись з іншого місця програми.
-/* 
-Синтаксис функції 
+/*
+Оголошена функція - Function Declaretion
 
-Як оголосити функцію?
-
-function ім'яФункції(аргумент1, аргумент 2) {
+function ім'яФункції(argument1, argument2) {
   тіло функції
 }
+
+ім'яФункції(argument1, argument2)
+
+hoisting - оголошення функції піднімається (hoisted) до верхньої частини коду
 */
 
-// Задача: написати функцію, яка буде приймати ім'я користувача:рядок і буде вітатись з користувачем
+greetingUser("James");
 
 function greetingUser(userName) {
-  // userName - абстракція, на якій ми зав'язуємо логіку робот функції
-  // userName - формальний параметр
   console.log("Hello, " + userName);
 }
 
-// Використання функції
-// Параметри, які передаються при виклику функції - фактичні параметри
-greetingUser("Alex"); // 'Alex' - агумент функції, фактичний параметр
-greetingUser("John");
-greetingUser("Sam");
-greetingUser("Solar");
+greetingUser("Alex");
 
-// Задача: Створіть функцію, яка приймає число, додає до нього 5 і виводить результат у консоль
+/*
+Function expression - Функціональний вираз
 
-function addFive(number) {
-  let result = Number(number) + 5;
-  console.log(result);
-  return result;
+const ім'яФункції = function(arg1, arg2) {
+  тіло функції
 }
 
-const addFiveResult = addFive(5);
-// Задача: Написати фукнцію, яка складає два числа і повертає результат розрахунку
+ім'яФункції(аргумент1, аргумент2);
+*/
+// greet("Test"); Призведе до помилки
 
-function addTwoNumbers(num1, num2) {
-  // console.log("Hi from function");
-  const result = num1 + num2;
-  return result;
+const greet = function (userName) {
+  console.log("Hello, " + userName);
+};
+
+greet("Kevin");
+
+/*
+Arrow Function - Стрілкова функція
+
+const ім'яФункції = (arg1, arg2) => {
+   тіло функції
 }
 
-const addTwoNumbersResult = addTwoNumbers(2, 5);
-console.log(addTwoNumbersResult);
+ім'яФункції(аргумент1, аргумент2);
 
-console.log(addTwoNumbersResult + addFiveResult); // 10 + 7 = 17
+hoisting не відбувається
+*/
+// greetArrow("Test"); Призведе до помилки
+
+const greetArrow = (userName) => {
+  console.log("Hello, " + userName);
+};
+
+greetArrow("Stepan");
