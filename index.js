@@ -24,7 +24,7 @@ if (min <= 15) {
 Ви зберігаєте у змінній рік.
 Потрібно визначити, чи є цей рік високосним.
 Примітка. Рік є високосним, якщо його номер кратний 4, 
-але не кратний 100, також якщо він кратний 400.
+але не кратний 100, АБО якщо він кратний 400.
 */
 
 let year = 2024;
@@ -32,7 +32,7 @@ let year = 2024;
 if ((year % 4 === 0 && year % 100 > 0) || year % 400 === 0) {
   console.log(year + " - високосний рік");
 } else {
-  console.log(year + " - не високосний рік");
+  console.log(year + " - НЕ високосний рік");
 }
 
 /* Задача 3.
@@ -43,10 +43,12 @@ if ((year % 4 === 0 && year % 100 > 0) || year % 400 === 0) {
 */
 
 const num = 60;
+const left = 40;
+const right = 60;
 
-if (num >= 40 && num <= 60) {
+if (num >= left && num <= right) {
   console.log(num + " - знаходиться в діапазоні");
-} else if (num < 40 || num > 60) {
+} else if (num < left || num > right) {
   console.log(num + " - знаходиться поза діапазоном");
 }
 
@@ -83,12 +85,14 @@ if (m >= n && k >= n) {
 const age = 15;
 const benefitPresence = true;
 
-if (age < 6) {
-  console.log('Вхід безкоштовний');
+if (age < 0 || typeof age !== "number") {
+  console.log("Некоректний вік користувача");
+} else if (age < 6) {
+  console.log("Вхід безкоштовний");
 } else if (age >= 6 && age < 12) {
-  console.log('Квиток коштує 10$');
+  console.log("Квиток коштує 10$");
 } else if (age >= 12 && benefitPresence === false) {
-  console.log('Квиток коштує 20$');
-} else if (age >= 12 && benefitPresence === true) {
-  console.log('Квиток коштує 10$');
+  console.log("Квиток коштує 20$");
+} else if (age >= 12 && benefitPresence) {
+  console.log("Квиток коштує 10$");
 }
