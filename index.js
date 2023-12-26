@@ -2,12 +2,14 @@
 Напишіть функцію, яка приймає 2 числа і повертає те, що більше*/
 
 function isLarger(num1, num2) {
-  if (num1 > num2) {
+  if (typeof num1 !== "number" || typeof num2 !== "number") {
+    console.log("Введіть число");
+  } else if (num1 > num2) {
     console.log(num1 + " - більше число");
   } else if (num1 < num2) {
     console.log(num2 + " - більше число");
-  } else if (num1 = num2) {
-    console.log(num1 - " - числа однакові")
+  } else if (num1 === num2) {
+    console.log(num1 - " - числа однакові");
   }
 }
 
