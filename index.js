@@ -1,55 +1,39 @@
-/*
-Оголошена функція - Function Declaretion
+/*Задача 1
+Напишіть функцію, яка приймає 2 числа і повертає те, що більше*/
 
-function ім'яФункції(argument1, argument2) {
-  тіло функції
+function isLarger(num1, num2) {
+  if (num1 > num2) {
+    console.log(num1 + " - більше число");
+  } else if (num1 < num2) {
+    console.log(num2 + " - більше число");
+  } else if (num1 = num2) {
+    console.log(num1 - " - числа однакові")
+  }
 }
 
-ім'яФункції(argument1, argument2)
+isLarger(3, 5);
 
-hoisting - оголошення функції піднімається (hoisted) до верхньої частини коду
-*/
+/*Задача 2
+Напишіть іншу функцію, яка знаходить середнє арифметичне з двох чисел.
+Середнє арифметичне значення = (одне число + друге число) / кількість чисел*/
 
-greetingUser("James");
-
-function greetingUser(userName) {
-  console.log("Hello, " + userName);
+function averageValue(num1, num2) {
+  result = (num1 + num2) / 2;
+  console.log(result);
 }
 
-greetingUser("Alex");
+averageValue(12, 8);
 
-/*
-Function expression - Функціональний вираз
+/*Задача 3
+Напишіть функцію, яка приймає одне число і визначає, чи є воно парним (четность)*/
 
-const ім'яФункції = function(arg1, arg2) {
-  тіло функції
+function isEvenNumber(num) {
+  if (num % 2 === 0) {
+    console.log(num + " - парне число");
+  } else if (num % 2 > 0) {
+    console.log(num + " - НЕ парне число");
+  }
 }
 
-ім'яФункції(аргумент1, аргумент2);
-*/
-// greet("Test"); Призведе до помилки
-
-const greet = function (userName) {
-  console.log("Hello, " + userName);
-};
-
-greet("Kevin");
-
-/*
-Arrow Function - Стрілкова функція
-
-const ім'яФункції = (arg1, arg2) => {
-   тіло функції
-}
-
-ім'яФункції(аргумент1, аргумент2);
-
-hoisting не відбувається
-*/
-// greetArrow("Test"); Призведе до помилки
-
-const greetArrow = (userName) => {
-  console.log("Hello, " + userName);
-};
-
-greetArrow("Stepan");
+isEvenNumber(16);
+isEvenNumber(17);
