@@ -74,7 +74,11 @@ prompt
 Зробіть, будь ласка, через switch-case
 */
 
-const beverage = Number(prompt("Введіть число: "));
+const beverage = Number(
+  prompt(
+    "Оберіть напій: \n1 - Сік \n2 - Вода \n3 - Кава \n4 - Чай \n5 - Лимонад"
+  )
+);
 
 switch (beverage) {
   case 1: {
@@ -115,29 +119,51 @@ switch (beverage) {
 Весь калькулятор - це теж окрема функція, роль якої - спитати у користувача два числа і дію і повернути йому результат в якості alert.
 */
 
-const num1 = Number(prompt("Введіть перше число: "));
-const action = prompt("Оберіть один з варіантів математичних дій: +, -, *, /");
-const num2 = Number(prompt("Введіть друге число: "));
+function calculator() {
+  const num1 = Number(prompt("Введіть перше число: "));
+  const action = prompt(
+    "Оберіть один з варіантів математичних дій: \n+, \n-, \n*, \n/"
+  );
+  const num2 = Number(prompt("Введіть друге число: "));
 
-switch (action) {
-  case "+":
-    {
-      alert(num1 + num2);
+  switch (action) {
+    case "+": {
+      alert(sum(num1, num2));
+      break;
     }
-    break;
-  case "-":
-    {
-      alert(num1 - num2);
+    case "-": {
+      alert(substract(num1, num2));
+      break;
     }
-    break;
-  case "*":
-    {
-      alert(num1 * num2);
+    case "*": {
+      alert(multiply(num1, num2));
+      break;
     }
-    break;
-  case "/":
-    {
-      alert(num1 / num2);
+    case "/": {
+      alert(divide(num1, num2));
+      break;
     }
-    break;
+    default: {
+      alert("Сталася помилка! Введіть коректні числа та дію: +, -, *, /");
+      break;
+    }
+  }
+}
+
+calculator();
+
+function sum(a, b) {
+  return a + b;
+}
+
+function substract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  return a / b;
 }
