@@ -47,7 +47,7 @@ const correctPassword = "qwerty1234";
 
 while (true) {
   password = prompt("Введіть пароль: ");
-  if ((password = correctPassword)) {
+  if ((password === correctPassword)) {
     break;
   }
 }
