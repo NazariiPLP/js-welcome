@@ -1,76 +1,32 @@
+// Задача:
 /*
-Задача1
-Зробити функцію-конструктор Country, яка приймає в якості аргументів:
-- назва країни
-- популяція (population)
-- площа (area)
-Спроектувати метод густоти населення
-P.S. Густота наеселення = популяція цієї країни / площу цієї ж країни
+Всередині alert виконати автоматичний розрахунок: 2+2=4
 */
 
-function Country(name, population, area) {
-  this.name = name;
-  this.population = population;
-  this.area = area;
-  this.density = function () {
-    const populationDensity = this.population / this.area;
-    return populationDensity + " people/square km";
-  };
-}
+alert("2+2=" + (2 + 2));
 
-const country1 = new Country("Ukraine", 45000000, 603628);
-console.log(country1.density());
+// Подвійні лапки: "Привіт"
+// Одинарні лапки: 'Привіт'
 
-const country2 = new Country("Italy", 59110000, 302073);
-console.log(country2.density());
+// Зворотні лапки: `Привіт` -->> шаблоний рядок
+// Dbhfpb erkflf.nmcz ${...вираз...}
 
-/*
-Задача 2
-Зробити функцію-конструктор Авто, яке має:
-- назву
-- максимальну швидкість
-- поточну швидкість
-Спроектувати методи:
-- метод прискорення (accelearte) - приймає в якості аргумента певне прискорення
-Зауважте, що при прискоренні, поточна швидкісь не може бути більшою за максимальну швидкість
-- метод сповільнення (deaccelerate) - приймає в якості аргумента певне сповільнення
-Зауважте, що при сповільненні, поточна швидкість не може бути менше за 0
-- метод зупинки (stop)
-*/
+// Рядки, які знаходяться у зворотніх лапках називаються шаблонними рядками
 
-function Automobile(name, maxSpeed, cruiseSpeed) {
-  this.name = name;
-  this.maxSpeed = maxSpeed;
-  this.cruiseSpeed = cruiseSpeed;
+const nickname = "Вася";
 
-  this.accelerate = function (acceleration) {
-    this.cruiseSpeed = this.cruiseSpeed + acceleration;
-    if (this.cruiseSpeed > maxSpeed) {
-      this.cruiseSpeed = maxSpeed;
-      return this.cruiseSpeed + " km/h";
-    } else if (this.cruiseSpeed <= maxSpeed) {
-      return this.cruiseSpeed + " km/h";
-    }
-  };
+// Задача: створити alert і привітатись з Васею
+// alert("Привіт, " + nickname + "!");
+alert(`Привіт, ${nickname}!`); // ``-->> шаблоний рядок
 
-  this.deaccelerate = function (slowdown) {
-    this.cruiseSpeed = this.cruiseSpeed - slowdown;
-    if (this.cruiseSpeed < 0) {
-      this.cruiseSpeed = 0;
-      return this.cruiseSpeed + " km/h";
-    } else if (this.cruiseSpeed >= 0) {
-      return this.cruiseSpeed + " km/h";
-    }
-  };
+alert(`результат: ${1 + 2}`);
 
-  this.stop = function () {
-    this.cruiseSpeed = 0;
-    return this.cruiseSpeed + " km/h";
-  };
-}
+// Задач: запитати у користувача два числа і вивести відповідь alert
 
-const automobile1 = new Automobile("Porsche", 340, 0);
+const first = Number(prompt("Enter first number"));
+const second = Number(prompt("Enter first number"));
 
-console.log(automobile1.accelerate(150));
-console.log(automobile1.deaccelerate(30));
-console.log(automobile1.stop);
+// alert(String(first) + "+" + String(second) + "=" + String(first + second));
+// 5+10=15
+
+alert(`${first} + ${second} = ${first + second}`);
