@@ -1,83 +1,76 @@
 /*
-Розробка для креування книжковим магазином
-
-Предметна область: В книжкому магазині є багато книг. Ми їх продаємо
-
-Всі книги модна представити у вигляді об'єкта з однаковою структорою.
-
--->> Задача: створити конструктор для об'єктів для представлення книг з наступними властивостями:
-Назва книги, автор, рік видання, кількість сторінок, ціна.
-Спроектувати методи для отримання і встановлення значень цих властивостей.
-
--->> Задача 2: потрібно зробити для всіх книг метод, який повертає ціну книги, але зі знижкою.
+Задача1
+Зробити функцію-конструктор Country, яка приймає в якості аргументів:
+- назва країни
+- популяція (population)
+- площа (area)
+Спроектувати метод густоти населення
+P.S. Густота наеселення = популяція цієї країни / площу цієї ж країни
 */
 
-function Book(title, author, year, pages, price) {
-  this.title = title;
-  this.author = author;
-  this.year = year;
-  this.pages = pages;
-  this.price = price;
-
-  this.getTitle = function () {
-    return this.title;
-  };
-
-  this.getAuthor = function () {
-    return this.author;
-  };
-
-  this.getYear = function () {
-    return this.year;
-  };
-
-  this.getPages = function () {
-    return this.pages;
-  };
-
-  this.getPrice = function () {
-    return this.price;
-  };
-
-  this.setTitle = function (newTitle) {
-    this.title = newTitle;
-  };
-
-  this.setAuthor = function (newAuthor) {
-    this.author = newAuthor;
-  };
-
-  this.setYear = function (newYear) {
-    this.year = newYear;
-  };
-
-  this.setPages = function (newPages) {
-    this.pages = newPages;
-  };
-
-  this.setPrice = function (newPrice) {
-    this.price + newPrice;
-  };
-
-  this.calculateDiscountedPrice = function (discountPercentage) {
-    const DiscountedPrice =
-      this.price - this.price * (discountPercentage / 100);
-    return DiscountedPrice;
+function Country(name, population, area) {
+  this.name = name;
+  this.population = population;
+  this.area = area;
+  this.density = function () {
+    const populationDensity = this.population / this.area;
+    return populationDensity + " people/square km";
   };
 }
 
-const book1 = new Book("Чотири вітри", "Крістін Генна", 2020, 600, 450);
+const country1 = new Country("Ukraine", 45000000, 603628);
+console.log(country1.density());
 
-// console.log(book1.getTitle());
-// console.log(book1.getAuthor());
-// console.log(book1.getYear());
-// console.log(book1.getPages());
-// console.log(book1.getPrice());
+const country2 = new Country("Italy", 59110000, 302073);
+console.log(country2.density());
 
-// book1.setTitle("New Title");
-// book1.setAuthor("New Author");
-// book1.setYear(2025);
-// book1.setPages(500);
-// book1.setPrice(350);
+/*
+Задача 2
+Зробити функцію-конструктор Авто, яке має:
+- назву
+- максимальну швидкість
+- поточну швидкість
+Спроектувати методи:
+- метод прискорення (accelearte) - приймає в якості аргумента певне прискорення
+Зауважте, що при прискоренні, поточна швидкісь не може бути більшою за максимальну швидкість
+- метод сповільнення (deaccelerate) - приймає в якості аргумента певне сповільнення
+Зауважте, що при сповільненні, поточна швидкість не може бути менше за 0
+- метод зупинки (stop)
+*/
 
-console.log(book1.calculateDiscountedPrice(50));
+function Automobile(name, maxSpeed, cruiseSpeed) {
+  this.name = name;
+  this.maxSpeed = maxSpeed;
+  this.cruiseSpeed = cruiseSpeed;
+
+  this.accelerate = function (acceleration) {
+    this.cruiseSpeed = this.cruiseSpeed + acceleration;
+    if (this.cruiseSpeed > maxSpeed) {
+      this.cruiseSpeed = maxSpeed;
+      return this.cruiseSpeed + " km/h";
+    } else if (this.cruiseSpeed <= maxSpeed) {
+      return this.cruiseSpeed + " km/h";
+    }
+  };
+
+  this.deaccelerate = function (slowdown) {
+    this.cruiseSpeed = this.cruiseSpeed - slowdown;
+    if (this.cruiseSpeed < 0) {
+      this.cruiseSpeed = 0;
+      return this.cruiseSpeed + " km/h";
+    } else if (this.cruiseSpeed >= 0) {
+      return this.cruiseSpeed + " km/h";
+    }
+  };
+
+  this.stop = function () {
+    this.cruiseSpeed = 0;
+    return this.cruiseSpeed + " km/h";
+  };
+}
+
+const automobile1 = new Automobile("Porsche", 340, 0);
+
+console.log(automobile1.accelerate(150));
+console.log(automobile1.deaccelerate(30));
+console.log(automobile1.stop);
