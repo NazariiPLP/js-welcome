@@ -23,9 +23,8 @@ const user = {
 };
 
 function greetingUser(user) {
+  user.age = 50;
   return `Hey, ${user.name} ${
     user.surname
   }! You will be ${user.age++} next year!`;
 }
-
-greetingUser(user);
