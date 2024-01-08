@@ -1,30 +1,30 @@
-/* Задача: // У нас є функція
-function greetingUser(user) {
-    // ? <<<--- шаблонний рядок
-  }
-  
-  
-  та у нас є об'єкт
-  const user = {
-    name: 'John',
-    surname: 'Doe',
-    age: 19
-  }
-  
-  Написати функцію greetingUser таким чином, щоб вона вітала користувача та вказала, скільки йому років має виповнитись у наступному році
-  
-  Приклад виклику функції:
-  greetingUser(user); // Hey, John Doe! You will be 20 next year! */
+// [] - обчислювальні властивості
 
 const user = {
-  name: "John",
-  surname: "Doe",
-  age: "19",
+  name: "John", // Ключ = 'name', значення - 'John'
+  "favorite color": "red",
+  0: "value",
 };
 
-function greetingUser(user) {
-  user.age = 50;
-  return `Hey, ${user.name} ${
-    user.surname
-  }! You will be ${user.age++} next year!`;
-}
+// Ключем в об'єкті може бути рядок або тип даних Symbol
+
+// . - оператор доступу за ім'ям властивості (коли мова йде про валідні ідентифікатори)
+
+console.log(user.name);
+// user.'favorite color'; -->> syntax error
+// user.0; -->>syntax error
+
+// [] - оператор доступу до обчислювальної властивості (коли мова йде про невалідні ідентифікатори)
+console.log(user["favorite color"]);
+
+console.log(user[0]); // value
+
+const someObj = {
+  2: 10,
+};
+
+// Задача: отримати значення, яке знаходиться під ключем 2
+console.log(someObj[2]);
+console.log(someObj["2"]);
+
+someObj[2];
