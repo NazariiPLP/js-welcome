@@ -1,30 +1,14 @@
-// [] - обчислювальні властивості
+// Задача: є об'єкт з різними версіями привітань для користувача
+// Вивести користувачу привітання, залежно від значення, яке він ввів.
 
-const user = {
-  name: "John", // Ключ = 'name', значення - 'John'
-  "favorite color": "red",
-  0: "value",
+const greets = {
+  15: "Hi",
+  17: "Ya, whats up",
+  19: "Hello",
+  30: "Good morning",
 };
 
-// Ключем в об'єкті може бути рядок або тип даних Symbol
+const valueFromUser = 19;
 
-// . - оператор доступу за ім'ям властивості (коли мова йде про валідні ідентифікатори)
-
-console.log(user.name);
-// user.'favorite color'; -->> syntax error
-// user.0; -->>syntax error
-
-// [] - оператор доступу до обчислювальної властивості (коли мова йде про невалідні ідентифікатори)
-console.log(user["favorite color"]);
-
-console.log(user[0]); // value
-
-const someObj = {
-  2: 10,
-};
-
-// Задача: отримати значення, яке знаходиться під ключем 2
-console.log(someObj[2]);
-console.log(someObj["2"]);
-
-someObj[2];
+console.log(greets[valueFromUser]); //Hello
+// greets[19]
