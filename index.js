@@ -1,32 +1,31 @@
-// Задача:
-/*
-Всередині alert виконати автоматичний розрахунок: 2+2=4
-*/
+/* Задача: // У нас є функція
+function greetingUser(user) {
+    // ? <<<--- шаблонний рядок
+  }
+  
+  
+  та у нас є об'єкт
+  const user = {
+    name: 'John',
+    surname: 'Doe',
+    age: 19
+  }
+  
+  Написати функцію greetingUser таким чином, щоб вона вітала користувача та вказала, скільки йому років має виповнитись у наступному році
+  
+  Приклад виклику функції:
+  greetingUser(user); // Hey, John Doe! You will be 20 next year! */
 
-alert("2+2=" + (2 + 2));
+const user = {
+  name: "John",
+  surname: "Doe",
+  age: "19",
+};
 
-// Подвійні лапки: "Привіт"
-// Одинарні лапки: 'Привіт'
+function greetingUser(user) {
+  return `Hey, ${user.name} ${
+    user.surname
+  }! You will be ${user.age++} next year!`;
+}
 
-// Зворотні лапки: `Привіт` -->> шаблоний рядок
-// Dbhfpb erkflf.nmcz ${...вираз...}
-
-// Рядки, які знаходяться у зворотніх лапках називаються шаблонними рядками
-
-const nickname = "Вася";
-
-// Задача: створити alert і привітатись з Васею
-// alert("Привіт, " + nickname + "!");
-alert(`Привіт, ${nickname}!`); // ``-->> шаблоний рядок
-
-alert(`результат: ${1 + 2}`);
-
-// Задач: запитати у користувача два числа і вивести відповідь alert
-
-const first = Number(prompt("Enter first number"));
-const second = Number(prompt("Enter first number"));
-
-// alert(String(first) + "+" + String(second) + "=" + String(first + second));
-// 5+10=15
-
-alert(`${first} + ${second} = ${first + second}`);
+greetingUser(user);
