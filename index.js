@@ -24,3 +24,23 @@ object - об'єкт властивості (ключі) якого потріб
 for (let key in user) {
   console.log(`${key} : ${user[key]}`); // key ---> value
 }
+
+/*
+Задача: написати функцію, яка приймає об'єкт і виводить всі значення всіх властивостей, оформлені *...*
+А ключі - "..."
+// "key1": *value1*
+*/
+
+const obj = {
+  key1: "value 1",
+  key2: "value 2",
+  key3: "value 3",
+};
+
+function objValue(x) {
+  for (let key in x) {
+    console.log(`"${key}":*${obj[key]}*`);
+  }
+}
+
+objValue(obj);
