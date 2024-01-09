@@ -1,37 +1,48 @@
-/*
-Задача: є об'єкт з зарплатами по всіх відділах.
-Написати функцію, яка повертає загальну суму, витрачену на зарплатню всіх відділів.
+// Є певний user
+
+const userTelephone1 = "380957382856";
+const userTelephone2 = "380678092562";
+const userTelephone3 = "380993648236";
+
+const userTelephones = {
+  0: "380957382856",
+  1: "380678092562",
+  2: "380993648236",
+};
+
+// Масив (Array)
+
+// Оголошення масиву
+
+// 1 спосіб
+const arr = [2, 4, 6, 7, 150, 789, 123];
+
+// 2 спосіб
+const arr2 = new Array(2, 4, 6, 7);
+
+// Способи доступу до елементів масиву
+arr[0]; // Зчитування значень елементів масиву
+arr[0] = 200; // Присвоєння нових значень для елементів масиву
+
+// Задача: вивесит всі значення масиву в консолі
+
+/* варіант1 
+console.log(arr[0]);
+console.log(arr[1]);
+console.log(arr[2]);
+console.log(arr[3]);
 */
 
-const departmentSalaryInCompany1 = {
-  HR: 120000,
-  development: 5500000,
-  PR: 50000,
-  marketing: 120000,
-  assistant: undefined,
-  financials: null,
-};
-
-const departmentSalaryInCompany2 = {
-  HR: 500000,
-  JS: 5500000,
-  PR: 50000,
-  QA: 800000,
-  clojure: 250000,
-  frontend: 365800,
-  strategyExecution: undefined,
-  cLevel: null,
-};
-
-function sumOfSalary(obj) {
-  let sum = 0;
-  for (let key in obj) {
-    if (obj[key] !== undefined && obj[key] !== null) {
-      sum += obj[key];
-    }
-  }
-  return sum;
+// варіант2
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
 }
 
-console.log(sumOfSalary(departmentSalaryInCompany1));
-console.log(sumOfSalary(departmentSalaryInCompany2));
+// Задача: у нас є масив чисел
+const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 20];
+
+for (let i = 0; i < numbersArray.length; i++) {
+  if (numbersArray[i] % 2 === 0) {
+    console.log(numbersArray[i]);
+  }
+}
