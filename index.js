@@ -1,37 +1,17 @@
-/* Задача 3
+// console.log(t);
+// console.dir(t);
 
-Створити новий масив користувачів, об'єкти мають бути у такому вигляді
-{
-  fullname: 'John Doe',
-  email: ....
+// Будь-яка JS функція - об'єкт
+
+// Задача: написати функцію, яка повертає суму БУДЬ-ЯКОЇ кількості аргументів
+
+function sum(a, b) {
+  const arrayArgs = Array.from(arguments);
+  let sum = 0;
+  for (let i = 0; i < arrayArgs.length; i++) {
+    sum += arrayArgs[i];
+  }
+  return sum;
 }
-*/
-const users = [
-  {
-    name: "John",
-    lastName: "Doe",
-    age: 19,
-    email: "john.doe@gmail.com",
-  },
-  {
-    name: "Jane",
-    lastName: "Doe",
-    age: 22,
-    email: "jane.doe@gmail.com",
-  },
-  {
-    name: "Jackson",
-    lastName: "Doe",
-    age: 55,
-    email: "jackson.doe@gmail.com",
-  },
-];
 
-newUserObject = (user) => {
-  return {
-    fullname: `${user.name} ${user.lastName}`,
-    email: user.email,
-  };
-};
-
-const newUsers = users.map(newUserObject);
+console.log(sum(2, 6, 3, 4, 5, 6, 7));
