@@ -1,43 +1,35 @@
-function saySomething(howToSay, whatToSay) {
-  howToSay(whatToSay);
-}
+//Задача 1: за допомогою forEach збільшити вік користувачів на 1
 
-// saySomething(alert, 'Hello user');
-// saySomething(console.log, "Hi!");
+const users = [
+  {
+    name: "John",
+    lastName: "Doe",
+    age: 19,
+    email: "john.doe@gmail.com",
+  },
+  {
+    name: "Jane",
+    lastName: "Doe",
+    age: 22,
+    email: "jane.doe@gmail.com",
+  },
+  {
+    name: "Jackson",
+    lastName: "Doe",
+    age: 55,
+    email: "jackson.doe@gmail.com",
+  },
+];
 
-// Як називаються функції, які приймають функції у якості агрумента?
-// HOF - High Order Function
-
-// Як називаються функція, яку ми передали як аргумент?
-// Сallback - функція зворотнього виклику
-
-// array.forEach - використовується для перебору (ітерації) кожного елемента масиву і виконання певної дії для кожного елемента
-// array.forEach(callback)
-
-// Задача: є масив чисел
-// Кожне значення цього масиву возвести в квадрат
-
-const array = [1, 2, 3, 4, 5];
-
-function square(a) {
-  console.log(a * a);
-}
-
-array.forEach(square);
-
-// еквівалент
-// for (let i = 0; i < array.length; i++) {
-//   square(array(i));
-// }
-
-array.forEach((item) => {
-  console.log(item * item);
+users.forEach((item) => {
+  console.log((item.age += 1));
 });
 
-// array.map - працює як forEach, проте map повертає новий масив
+/* Задача 2
 
-const newArray = array.map((item) => {
-  return item * item;
-});
+Дано масив [2, 44, 11, 234, 8, 2, 4, 1]
+Зробити новий масив, всі елементи якого = елемент зі старого масиву + 100
+*/
 
-// При використані map, в такому випадку, значення, яке повертається (return) з callback - воно і буде входити у результуючий масив
+const array = [2, 44, 11, 234, 8, 2, 4, 1];
+const newArray = array.map((item) => item + 100);
