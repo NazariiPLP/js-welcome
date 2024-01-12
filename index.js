@@ -1,5 +1,11 @@
-//Задача 1: за допомогою forEach збільшити вік користувачів на 1
+/* Задача 3
 
+Створити новий масив користувачів, об'єкти мають бути у такому вигляді
+{
+  fullname: 'John Doe',
+  email: ....
+}
+*/
 const users = [
   {
     name: "John",
@@ -21,15 +27,11 @@ const users = [
   },
 ];
 
-users.forEach((item) => {
-  console.log((item.age += 1));
-});
+newUserObject = (user) => {
+  return {
+    fullname: `${user.name} ${user.lastName}`,
+    email: user.email,
+  };
+};
 
-/* Задача 2
-
-Дано масив [2, 44, 11, 234, 8, 2, 4, 1]
-Зробити новий масив, всі елементи якого = елемент зі старого масиву + 100
-*/
-
-const array = [2, 44, 11, 234, 8, 2, 4, 1];
-const newArray = array.map((item) => item + 100);
+const newUsers = users.map(newUserObject);
