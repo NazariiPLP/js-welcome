@@ -9,8 +9,7 @@ arr1 = [1, 2, 3, 4, 5];
 arr1.splice(1, 2); // [1, 4, 5]
 
 arr2 = [1, 2, 3, 4];
-const arr3 = arr2.slice(1);
-[2, 3, 4];
+const arr3 = arr2.slice(1); // [2, 3, 4];
 
 arr4 = [1, 2, 3, 4, 5];
 arr4.splice(1, 0, "w", "tr-td");
@@ -44,12 +43,13 @@ array1 = [1, 2, 3, 4, 5];
 array2 = [1, 2, 3, 3, 5];
 
 function sameElements(array) {
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length -1; i++) {
     if (array[i] === array[i + 1]) {
-      console.log(true);
+      return true;
     }
   }
+  return false
 }
 
-sameElements(array1);
-sameElements(array2);
+console.log(sameElements(array1));
+console.log(sameElements(array2));
