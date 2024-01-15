@@ -18,4 +18,24 @@ return item > 0
 }
 
 
-const filteresNumbersArray = numbersArray.filter(filterFunction);
+const filteredNumbersArray = numbersArray.filter(filterFunction);
+
+/* Задача
+const array = [1, 2, 3, 4, 5, 6];
+Створити новий масив, в який увійдуть тільки парні елементи початкового масива
+*/
+
+const array = [1, 2, 3, 4, 5, 6];
+
+function filterOddNumbers(item) {
+  //   if(item % 2 === 0) {
+  //     return true
+  //   } else {// item < 0
+  //     return false
+  //   }
+
+  return item % 2 === 0
+}
+
+const oddNumbersArray = array.filter(filterOddNumbers);
+
