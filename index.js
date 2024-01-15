@@ -39,3 +39,20 @@ dogArray.sort((dog1, dog2) => {
 dogArray.sort((dog1, dog2) => {
   return dog2.age - dog1.age // у порядку спадання
 })
+
+/* Задача 2
+Відсіяти всіх собак окрім чорних
+*/
+
+function filterDogs(dog) {
+    // if(dog.color !== 'white') {
+    //   return true
+    // } else {// dog.color === 'white'
+    //   return false
+    // }
+    
+    return dog.color !== 'white'
+  }
+  
+  
+  const blackDogsArray = dogArray.filter(filterDogs);
