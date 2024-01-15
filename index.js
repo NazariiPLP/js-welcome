@@ -1,12 +1,12 @@
-// Задача: написати функцію, яка повертає суму БУДЬ-ЯКОЇ кількості аргументів
+/*
+Створити новий масив, кожен елемент якого = едемент зі старого масиву помножений * 2
+*/
 
-function sum(a, b) {
-  const arrayArgs = Array.from(arguments);
-  let sum = 0;
-  for (let i = 0; i < arrayArgs.length; i++) {
-    sum += arrayArgs[i];
-  }
-  return sum;
-}
+const oldArray = [1, 2, 3, 4, 5, 1, 2,] // old array
 
-console.log(sum(2, 6, 3, 4, 5, 6, 7));
+const newArray = oldArray.map((item) => {
+  return item * 2;
+}).reverse().join(', '); // chaining (map -> reverse -> join)
+
+// Потрібно змінити порядок слідування елементів в масиві newArray на протилежний
+
