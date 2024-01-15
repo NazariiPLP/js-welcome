@@ -32,3 +32,10 @@ dogArray.sort((dog1, dog2) => {
   return dog2.weight - dog1.weight; // у порядку спадання
 })
 
+/* Задача 1
+Відсортувати собак від найстаршого до наймолодшого
+*/
+
+dogArray.sort((dog1, dog2) => {
+  return dog2.age - dog1.age // у порядку спадання
+})
