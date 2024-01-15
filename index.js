@@ -1,43 +1,21 @@
-// array.sort - використовується для сортування елементів в масиві (мутуючий)
-// array.sort([compareFunction])
+// array.filter - використовується для створення нового масиву, які задовільняють певні умови
+// array.filter(callback)
+// Колбек буде викликатись для кожного елементу масиву ->
+// -> ця колбек-функція всередині filter повинна повертати true/false для кожного елементу масиву
 
-const numbersArray = [5, 3, 9, 21, 5, 1, 2, 4];
-// array.sort(); // сортування за зростанням (unicode)
+const numbersArray = [5, 3, -9, 21, 1, -2, 4];
 
-const lettersArray = ['bbb', 'abb', 'aaa', 'aba'];
-// lettersArray.sort(); // сортування за зростанням (unicode)
+// Відфільтрувати масив NumbersArray, щоб залишились тільки додатні числа (> 0)
 
-// Задача : відсортувати масив numbersArray за зростанням
+function filterFunction(item) {
+//   if(item > 0) {
+//     return true
+//   } else {// item < 0
+//     return false
+//   }
 
-function compareFunction(a, b) { // функція-клмпоратор
-  // a - поточне переглядаєме число
-  // b - наступне число, яке слідує за поточним
-  if(b > a) {
-    // 4 (a), 6 (b)
-    // відсортувати за зростанням 
-    return -1;
-  } else { // b < a 
-    // 10 (a), 5 (b) --->>> 5, 10
-    // відсортувати за зростанням
-    return 1;
-  }
-
+return item > 0
 }
 
-// Функція-компоратор повинна повернути (retutn) одне з трьох поточних значень:
-/*
--1  - спочатку йде число a, потім число b
-0 - елементи залишаються на місці
-1 - спочатку йде число b, потім число a
-*/
 
-numbersArray.sort(compareFunction);
-
-const newNumbersArray = [3, 4, 1, 0, -5, 12, 13];
-
-function compareNumbers(a, b) {
-  // return a - b; // сортування у порядку зростання;
-  return b - a; // сортування у порядку спадання;
-}
-
-newNumbersArray.sort(compareNumbers);
+const filteresNumbersArray = numbersArray.filter(filterFunction);
