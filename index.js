@@ -1,93 +1,37 @@
-function MyArray() {
-  this.length = 0;
+'use strict';
+// strict mode
+
+console.log(this); // => this вказує на глобальний об'єкт Window
+
+
+// this у глобальній області видимості посилається на об'єкт Window
+
+function test() { // Function Declaration
+  console.log(this); // => this вказує на функцію
 }
 
-function MyArrayPrototype()  {
- this.push = function () {
-    // значення додати у КІНЕЦЬ масиву
-    argsArray = Array.from(arguments);
-    for (let i = 0; i < argsArray.length; i++) {
-      this[this.length] = argsArray[i];
-      this.length++;
-    }
-    return this.length;
-  },
+test();
 
- this.pop = function() {
-    if(this.length > 0) {
-      // 1. Зберегти останній елемент
-      const lastItem = this[this.length - 1];
-      // 2. Видалити останній елемент з масиву
-      delete this[this.length - 1];
-      // 3. Зменшити довжину масиву на 1
-      this.length--;
-      // 4. Повернути останній елемент
-      return lastItem;
-    } else {
-      return undefined;
-    }
-  },
-
-  this.forEach = function(callback) {
-    for (let i = 0; i < this.length; i++) {
-      callback(this[i], i, this);
-    }
-  }
+// Function Expression
+const test2 = function() {
+  console.log(this); // => this вказує на функцію
 }
 
-MyArray.prototype = new MyArrayPrototype; // прототипне посилання
+test2();
 
-const arr = new MyArray();
-arr.push(1, 2, 3, 4, 5);
+console.log(this); // => this вказує на глобальний об'єкт Window
 
-// Яка різниця між __proto__ та .protoype?
-
-// __proto__ працює тільки тоді, коли ми літерально створили об'єкт
-{
-  //
-}
-
-// .prototype - коли об'єкти створються за допомогою конструктора
-
-/* Задача 1
-створити функцію-конструктор для сходів. (ladder)
-Об'єкт має властивість:
-currentStair - сходинка, на якій ми зараз знаходимось. Початково = 0
-
-Має методи:   <<<--- .prototype
-up() - піднімає на сходинку вище
-down() - опускає на сходинку нижче
-showStair() - показує, на якій сходинці ми зараз знаходимось
+// Весь код, оточений фігурними дужками - контекст виконання;
+/*
+Strict mode запустив такий механізм, що у Function Declaration та у Function Expression з'являється власний контекст виконання функції.
+Контекстом виконання функції стає сама функція, а не глоюальний об'єкт window
 */
 
-function MyStairs() {
-this.currentStair = 0
+// Arrow Function
+const test3 = () => {
+console.log(this); // => this вказує на глоюальний об'єкт window
+
+// Стрілочна функція не має власного контексту виконання.
 }
 
-function MyStairsPrototype() {
-this.up = function () { 
- this.currentStair += 1;
- return this;
-}
-this.down = function () {
-  this.currentStair -= 1;
-  return this;
-}
-this.showStair = function () {
-  return this.currentStair;
-}
-}
-
-MyStairs.prototype = new MyStairsPrototype();
-
-const ladder = new MyStairs();
-
-console.log(ladder.up().up().up().down().showStair());
-
-/* Задача 2
-Перепишіть методи таким чином, щоб можливо було використання чейнінгу, тобто щоб можна було об'єднати виклик методів у ланцюжок
-
-const ladder = new Ladder();
-
-ladder.up().up().down().up().showStair();
-*/
+test3();
