@@ -1,7 +1,9 @@
 function MyArray() {
   this.length = 0;
+}
 
-  this.push = function () {
+function MyArrayPrototype()  {
+ this.push = function () {
     // значення додати у КІНЕЦЬ масиву
     argsArray = Array.from(arguments);
     for (let i = 0; i < argsArray.length; i++) {
@@ -9,9 +11,9 @@ function MyArray() {
       this.length++;
     }
     return this.length;
-  }
+  },
 
-  this.pop = function() {
+ this.pop = function() {
     if(this.length > 0) {
       // 1. Зберегти останній елемент
       const lastItem = this[this.length - 1];
@@ -23,8 +25,8 @@ function MyArray() {
       return lastItem;
     } else {
       return undefined;
-    }  
-  }
+    }
+  },
 
   this.forEach = function(callback) {
     for (let i = 0; i < this.length; i++) {
@@ -33,8 +35,10 @@ function MyArray() {
   }
 }
 
+MyArray.prototype = new MyArrayPrototype; // прототипне посилання
+
 const arr = new MyArray();
-arr.push(1, 2, 3, 4, 5, 6);
+arr.push(1, 2, 3, 4, 5);
 
 // Відконсольлогувати кваlрати кожного числа в масиві arr
 
@@ -42,29 +46,11 @@ arr.forEach((item) => {
 console.log(item * item);
 })
 
-const cat = {
-  name: 'Barsik',
-  color: 'red',
-  age: 1
+// Яка різниця між __proto__ та .protoype?
+
+// __proto__ працює тільки тоді, коли ми літерально створили об'єкт
+{
+  //
 }
 
-const cat2 = {
-  name: 'Murzik',
-  color: 'black',
-  age: 5
-}
-
-const catMethods = { // прототип
-  run: function() {
-    console.log(`${this.name} is running!`);
-  },
-  meow: function() {
-    console.log(`${this.name} said meow!`)
-  }
-}
-
-// Як зв'язати catMethods з об'єктом cat?
-
-cat.__proto__ = catMethods; // прототипне посилання
-cat2.__proto__ = catMethods;
-
+// .prototype - коли 
