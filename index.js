@@ -40,12 +40,6 @@ MyArray.prototype = new MyArrayPrototype; // прототипне посилан
 const arr = new MyArray();
 arr.push(1, 2, 3, 4, 5);
 
-// Відконсольлогувати кваlрати кожного числа в масиві arr
-
-arr.forEach((item) => {
-console.log(item * item);
-})
-
 // Яка різниця між __proto__ та .protoype?
 
 // __proto__ працює тільки тоді, коли ми літерально створили об'єкт
@@ -53,4 +47,47 @@ console.log(item * item);
   //
 }
 
-// .prototype - коли 
+// .prototype - коли об'єкти створються за допомогою конструктора
+
+/* Задача 1
+створити функцію-конструктор для сходів. (ladder)
+Об'єкт має властивість:
+currentStair - сходинка, на якій ми зараз знаходимось. Початково = 0
+
+Має методи:   <<<--- .prototype
+up() - піднімає на сходинку вище
+down() - опускає на сходинку нижче
+showStair() - показує, на якій сходинці ми зараз знаходимось
+*/
+
+function MyStairs() {
+this.currentStair = 0
+}
+
+function MyStairsPrototype() {
+this.up = function () { 
+ this.currentStair += 1;
+ return this;
+}
+this.down = function () {
+  this.currentStair -= 1;
+  return this;
+}
+this.showStair = function () {
+  return this.currentStair;
+}
+}
+
+MyStairs.prototype = new MyStairsPrototype();
+
+const ladder = new MyStairs();
+
+console.log(ladder.up().up().up().down().showStair());
+
+/* Задача 2
+Перепишіть методи таким чином, щоб можливо було використання чейнінгу, тобто щоб можна було об'єднати виклик методів у ланцюжок
+
+const ladder = new Ladder();
+
+ladder.up().up().down().up().showStair();
+*/
