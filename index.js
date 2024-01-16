@@ -41,3 +41,30 @@ arr.push(1, 2, 3, 4, 5, 6);
 arr.forEach((item) => {
 console.log(item * item);
 })
+
+const cat = {
+  name: 'Barsik',
+  color: 'red',
+  age: 1
+}
+
+const cat2 = {
+  name: 'Murzik',
+  color: 'black',
+  age: 5
+}
+
+const catMethods = { // прототип
+  run: function() {
+    console.log('Cat is running');
+  },
+  meow: function() {
+    console.log('Meow!')
+  }
+}
+
+// Як зв'язати catMethods з об'єктом cat?
+
+cat.__proto__ = catMethods; // прототипне посилання
+cat2.__proto__ = catMethods;
+
