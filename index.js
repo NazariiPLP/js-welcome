@@ -1,7 +1,7 @@
 function MyArray() {
   this.length = 0;
 
-  this.push = function (value) {
+  this.push = function () {
     // значення додати у КІНЕЦЬ масиву
     argsArray = Array.from(arguments);
     for (let i = 0; i < argsArray.length; i++) {
@@ -23,14 +23,21 @@ function MyArray() {
       return lastItem;
     } else {
       return undefined;
-    }
+    }  
   }
 
-  this.forEach = function() {
-
+  this.forEach = function(callback) {
+    for (let i = 0; i < this.length; i++) {
+      callback(this[i], i, this);
+    }
   }
 }
 
 const arr = new MyArray();
 arr.push(1, 2, 3, 4, 5, 6);
 
+// Відконсольлогувати кваlрати кожного числа в масиві arr
+
+arr.forEach((item) => {
+console.log(item * item);
+})
