@@ -48,3 +48,13 @@ Math.min(...numbersMath); // 1
 // Задача: зробити масив з назвою copyArray в який будуть входити всі елементи з масиву numbersMath
 
 const copyArray = [...numbersMath];
+
+// Задача
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [10, 11, 12, 13, 14, 15];
+
+// Потрібно зклеїти ці 2 масиву без використання методу concat. Треба використати spread оператор
+
+const resultArray = [...array1, ...array2];
+console.log(resultArray);
