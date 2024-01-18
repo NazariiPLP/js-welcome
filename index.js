@@ -1,61 +1,47 @@
 'use strict';
-// strict mode
 
-console.log(this); // => this вказує на глобальний об'єкт Window
+// Написати функцію суми двох аргументів
 
-
-// this у глобальній області видимості посилається на об'єкт Window
-
-function test() { // Function Declaration
-  console.log(this); // => this вказує на функцію
+function sum(a, b) { //Function declaretion
+  return a + b;
 }
 
-test();
-
-// Function Expression
-const test2 = function() {
-  console.log(this); // => this вказує на функцію
+const sumArrow = (a, b) => { // Arrow declation
+  return a + b;
 }
 
-test2();
+const sumArrowVariant2 = (a, b) => a + b; // a + b === {return a + b;}
 
-console.log(this); // => this вказує на глобальний об'єкт Window
+// Задача: написати функцію яка приймає число і зводить його у квадрат
 
-// Весь код, оточений фігурними дужками - контекст виконання;
-/*
-Strict mode запустив такий механізм, що у Function Declaration та у Function Expression з'являється власний контекст виконання функції.
-Контекстом виконання функції стає сама функція, а не глоюальний об'єкт window
+function square (a) {
+  return a ** 2;
+}
+
+const squareArrow = a => a ** 2; // Якщо у arrow function один аргумент та/або одна дія - круглі та/або фігурні дужки можна не використовувати.
+// АЛЕ! Якщо функція не приймає жодного аргументиу - круглі дужки необхідно писати.
+
+const SuperFunc = () => { // this вказує на глобальну область видимості
+  this.value = 'Hello'; // необхідно, щоб функція-конструтор вказувала на власний контекст виконання 
+  //функція-конструктор не може бути стрілочною
+}
+
+// arguments - псевдомасив з аргументами, які перпедаються функції при виклику
+
+const t1 = function () {
+  console.log(arguments);
+}
+
+const t2 = () => { // стрілкові фунції не мають arguments
+  console.log(arguments);
+}
+
+t2('hello', 'world', '!!!');
+
+/* Особливості стрілочних функцій (Arrow Function)
+
+1. Стрілкова функція не має свого власного контексту виконання (завжди бере найближчий, доступний this, свого this не має)
+2. Стрілкова функція не може бути функцією-конструктором\
+3. Стрілочна функція не має колекції arguments
+
 */
-
-// Arrow Function
-const test3 = () => {
-console.log(this); // => this вказує на глоюальний об'єкт window
-
-// Стрілочна функція не має власного контексту виконання.
-}
-
-test3();
-
-const newspaper = {
-  title: 'News...',
-  articles: [{
-    author: 'John Doe',
-    date: '23-08-2023',
-    text: 'lorem',
-  }, { 
-    author: 'Richard Doe',
-    date: '25-08-2023',
-    text: 'lorem',
-}, { 
-    author: 'Sam Doe',
-    date: '25-08-2023',
-    text: 'lorem',
-}] ,
-showArticles: function() {
-  this.articles.forEach ((item, index) => {
-    console.log(`${this.title} ${index} - ${item.author}`)
-  })
-}
-}
-
-newspaper.showArticles();
