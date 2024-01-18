@@ -1,47 +1,31 @@
 'use strict';
 
-// Написати функцію суми двох аргументів
-
-function sum(a, b) { //Function declaretion
-  return a + b;
-}
-
-const sumArrow = (a, b) => { // Arrow declation
-  return a + b;
-}
-
-const sumArrowVariant2 = (a, b) => a + b; // a + b === {return a + b;}
-
-// Задача: написати функцію яка приймає число і зводить його у квадрат
-
-function square (a) {
-  return a ** 2;
-}
-
-const squareArrow = a => a ** 2; // Якщо у arrow function один аргумент та/або одна дія - круглі та/або фігурні дужки можна не використовувати.
-// АЛЕ! Якщо функція не приймає жодного аргументиу - круглі дужки необхідно писати.
-
-const SuperFunc = () => { // this вказує на глобальну область видимості
-  this.value = 'Hello'; // необхідно, щоб функція-конструтор вказувала на власний контекст виконання 
-  //функція-конструктор не може бути стрілочною
-}
-
-// arguments - псевдомасив з аргументами, які перпедаються функції при виклику
-
-const t1 = function () {
-  console.log(arguments);
-}
-
-const t2 = () => { // стрілкові фунції не мають arguments
-  console.log(arguments);
-}
-
-t2('hello', 'world', '!!!');
-
-/* Особливості стрілочних функцій (Arrow Function)
-
-1. Стрілкова функція не має свого власного контексту виконання (завжди бере найближчий, доступний this, свого this не має)
-2. Стрілкова функція не може бути функцією-конструктором\
-3. Стрілочна функція не має колекції arguments
+/* Задача:
 
 */
+
+// rest operator 
+// rest - залишок (з англ.)
+// .., .., .., .., -->> []
+
+function sum(a, b, ...arrayOfRestArguments) {
+  console.log(arrayOfRestArguments);
+  return a + b;
+}
+
+console.log(sum(1, 2, 3, 5, 10, 25)); // 3
+
+// function f(arg1, ...rest, arg2) { // помилка
+
+// }
+
+// Задача: написати стрілочну функцію, яка сумує будь-яку кількість чисел
+
+const arrowSum = (...restArrayOfNumbers) => {
+  let sum = 0
+  for (let i = 0; i < restArrayOfNumbers.length; i++) {
+    sum += restArrayOfNumbers[i];
+  }
+  return sum;
+}
+
