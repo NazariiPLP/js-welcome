@@ -18,3 +18,26 @@ function capitalizeWords(str) {
 }
 
 capitalizeWords("word flower third");
+
+/* Задача 1
+Написати функцію checkspam, яка повертає true, якщо переданий рядок містить слова 'xxx' або 'viagra'
+Якщо заборонений слів у рядку немає - функція повертає false
+*/
+
+str1 = 'buy ViAgRa now';
+str2 = 'free xxxxxxxx';
+str3 = 'innocent rabbit';
+
+function checkspam (string) {
+  if (string.toLowerCase().includes('via') || string.toLowerCase().includes('xxx')) {
+    return true;
+  } else {
+    return false;
+  }
+
+}
+
+console.log(checkspam(str1));
+console.log(checkspam(str2));
+console.log(checkspam(str3));
+
