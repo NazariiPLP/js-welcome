@@ -14,7 +14,7 @@ function capitalizeWords(str) {
   }
 
   // Попертаємо з'єднаний рядок зі словами, розділений пробілами
-  return words.join(' ');
+  return words.join(" ");
 }
 
 capitalizeWords("word flower third");
@@ -24,20 +24,38 @@ capitalizeWords("word flower third");
 Якщо заборонений слів у рядку немає - функція повертає false
 */
 
-str1 = 'buy ViAgRa now';
-str2 = 'free xxxxxxxx';
-str3 = 'innocent rabbit';
+str1 = "buy ViAgRa now";
+str2 = "free xxxxxxxx";
+str3 = "innocent rabbit";
 
-function checkspam (string) {
-  if (string.toLowerCase().includes('via') || string.toLowerCase().includes('xxx')) {
-    return true;
-  } else {
-    return false;
+function checkSpam(string) {
+  const spamArray = ["xxx", "viagra"];
+  for (let i = 0; i < spamArray.length; i++) {
+    if (string.toLowerCase().includes(spamArray[i])) {
+      return true;
+    }
   }
-
+  return false;
 }
 
-console.log(checkspam(str1));
-console.log(checkspam(str2));
-console.log(checkspam(str3));
+console.log(checkSpam(str1));
+console.log(checkSpam(str2));
+console.log(checkSpam(str3));
 
+/* Задача 2
+Написати функцію, яка визначає чи є слово паліндромом (слово, яке одноково читається з обох сторін).
+*/
+
+str4 = 'Anna';
+str5 = 'Namman';
+str6 = 'Mama';
+
+function checkPalindrom (str) {
+  const originalStr = str.toLowerCase();
+  const reversedStr = originalStr.split('').reverse().join('');
+  console.log(originalStr === reversedStr);
+}
+
+checkPalindrom(str4);
+checkPalindrom(str5);
+checkPalindrom(str6);
