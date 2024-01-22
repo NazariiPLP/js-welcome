@@ -1,61 +1,38 @@
-/*
-Написати функцію, яка приймає рядок і робить кожну першу літеру кожного слова з великої літери
-*/
+const date = new Date(); // за замовченням буде створена поточна системна дата та час
+const date1 = new Date("12-31-2023"); // 31.12.2023
 
-function capitalizeWords(str) {
-  // Розбиваємо рядок на окремі слова
-  let words = str.split(" ");
+console.log(date1.getDate()); // 31; getDate - використовується для отримання дня місяця з дати
+console.log(date1.getDay()); // 0; getDay - використовується для отримання дня тижня з дати (0 - неділя, 6 - субота)
+console.log(date1.getFullYear()); // 2023; getFullYear - використовується для отримання року з дати
+console.log(date.getHours()); // getHours - викорстовується для отримання години з дати (0-23)
+console.log(date.getMinutes());
+console.log(date.getSeconds());
+console.log(date.getTime()); // getTime - використовується для отримання кількості мілісекунд, яка пройшла з 1 січня 1970 року 00:00:00
 
-  // Проходимо по кожному слову і робимо першу літеру великою
-  for (let i = 0; i < words.length; i++) {
-    words[i] = console.log(
-      words[i].charAt(0).toUpperCase() + words[i].slice(1)
-    );
-  }
+// Задача: знрайти суму епршого 1000000 чисел
 
-  // Попертаємо з'єднаний рядок зі словами, розділений пробілами
-  return words.join(" ");
+let sum = 0; // 1. Створення змінної
+
+const time1 = new Date(); // Відрізок часу до початку операції 2
+
+for (let i = 0; i <= 1000000; i++) { // 2. Накопичуємо суму
+  sum += i;
 }
 
-capitalizeWords("word flower third");
+const time2 = new Date(); // Відрізок часу після початку операції 2
 
-/* Задача 1
-Написати функцію checkspam, яка повертає true, якщо переданий рядок містить слова 'xxx' або 'viagra'
-Якщо заборонений слів у рядку немає - функція повертає false
-*/
+console.log(sum);
+console.log(time2.getTime() - time1.getTime()); // кількість витрачених мілісекунд на операцію 2
 
-str1 = "buy ViAgRa now";
-str2 = "free xxxxxxxx";
-str3 = "innocent rabbit";
+// Приклад з консоль.таймами
 
-function checkSpam(string) {
-  const spamArray = ["xxx", "viagra"];
-  for (let i = 0; i < spamArray.length; i++) {
-    if (string.toLowerCase().includes(spamArray[i])) {
-      return true;
-    }
-  }
-  return false;
+console.time('operation');
+
+let sum2 = 0;
+for (let i = 0; i <=1000000; i++) {
+sum2 += i;
 }
 
-console.log(checkSpam(str1));
-console.log(checkSpam(str2));
-console.log(checkSpam(str3));
+// ......
 
-/* Задача 2
-Написати функцію, яка визначає чи є слово паліндромом (слово, яке одноково читається з обох сторін).
-*/
-
-str4 = 'Anna';
-str5 = 'Namman';
-str6 = 'Mama';
-
-function checkPalindrom (str) {
-  const originalStr = str.toLowerCase();
-  const reversedStr = originalStr.split('').reverse().join('');
-  console.log(originalStr === reversedStr);
-}
-
-checkPalindrom(str4);
-checkPalindrom(str5);
-checkPalindrom(str6);
+console.timeEnd('operation');
