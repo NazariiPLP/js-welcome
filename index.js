@@ -1,12 +1,35 @@
+// Задача: аписати функцію суми додатніх чисел
+
 /**
- * Повертає x у ступені m
- *
- * @param {number} x число, яке потібно піднести до степеня
- * @param {number} n степінь, у який потрібно піднести
- * @return {number} x піднесене у n-нну степень
+ * Функція знаходить суму двох додатніх чисел
+ * @param {number} a число 1 
+ * @param {number} b число 2
+ * @returns {number} сума
+ * @throws {RangeError} якщо a або b - не є цілим числом
+ * @throws {TypeError} якщо a або b - не є числом
  */
-function pow(x, n) {
-  return x ** n;
+function sumOfPositiveNumber(a, b) {
+  if (a < 0 || b < 0) {
+    // маємо "викинути" помилку
+    const error = new RangeError("Одне з чисел менше 0");
+    throw error; // return для помилок
+  }
+
+  if (typeof a !== "number" || typeof b !== "number") {
+    throw new TypeError('Параметри a та b мають бути числами')
+  }
+
+  return a + b;
 }
 
-// https://jsdoc.app/
+// throw <об'єкт помилки>
+// throw - кинути
+
+try {
+  // якийсь код, очікуючи що може виникнути помилка
+  sumOfPositiveNumber(1, -2);
+} catch(error) {
+  console.log(error);
+}
+
+console.log('Usual code flow');
