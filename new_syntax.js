@@ -1,3 +1,4 @@
+"use strict";
 /*
 
 class MyClass {
@@ -45,19 +46,34 @@ const user2 = new User("Dari", "Dane", 23);
 Метод, який повертає зарплатню цього робітника за поточний місяць
 */
 
-class Worker {
-    constructor (name, lastName, rate, daysWorked) {
-        this.name = name;
-        this.lastName = lastName;
-        this.rate = rate;
-        this.daysWorked = daysWorked;
-    }
+const MIN_ZP = 7100;
+const WORK_DAYS = 21;
+const MIN_RATE = MIN_ZP / WORK_DAYS;
 
-    getSalary() {
-        return this.rate * this.daysWorked;
-    }
+class Worker {
+  constructor(name, lastName, rate = MIN_RATE, daysWorked = WORK_DAYS) {
+    this.name = name;
+    this.lastName = lastName;
+    this.rate = Number(rate.toFixed(2));
+    this.daysWorked = daysWorked;
+  }
+
+  getSalary() {
+    return this.rate * this.daysWorked;
+  }
 }
 
-const worker1 = new Worker ('Alex', 'Fisherman', 200, 20);
+const worker1 = new Worker("Alex", "Fisherman", 3000, 20);
+const worker2 = new Worker("Savanah", "Loe");
 
 console.log(worker1.getSalary());
+
+/* Параметри за замовченням */
+
+function sum(a = 10, b = 5) {
+  return a + b;
+}
+
+console.log(sum()); // 15
+console.log(sum(3)); // 8
+console.log(sum(3, 7)); // 10
