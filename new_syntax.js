@@ -51,15 +51,60 @@ const WORK_DAYS = 21;
 const MIN_RATE = MIN_ZP / WORK_DAYS;
 
 class Worker {
-  constructor(name, lastName, rate = MIN_RATE, daysWorked = WORK_DAYS) {
+  constructor(
+    name,
+    lastName,
+    rate = MIN_RATE,
+    daysWorked = WORK_DAYS,
+    coefficient
+  ) {
+    if (name === "" || lastName === "") {
+      throw new Error("Name and lastName must be valid");
+    }
+
     this.name = name;
     this.lastName = lastName;
-    this.rate = Number(rate.toFixed(2));
+
+    if (typeof rate !== "number" || typeof daysWorked !== "number") {
+      throw new TypeError("Rate and days must be a number");
+    }
+
+    if (rate < 0) {
+      throw new RangeError("Rate must be a positive number");
+    }
+
+    this._rate = Number(rate.toFixed(2));
+
+    if (daysWorked < 0 || daysWorked > 31) {
+      throw new RangeError("Days must be in 0 to 31");
+    }
+
     this.daysWorked = daysWorked;
+    this.coefficient = coefficient;
+  }
+
+  setRate(value) {
+    if (typeof value !== "number" || typeof daysWorked !== "number") {
+      throw new TypeError("Rate must be a number");
+    }
+
+    if (value < 0) {
+      throw new RangeError("Rate must be a positive number");
+    }
+
+    this._rate = value;
+  }
+
+  getRate() {
+    return this._rate;
   }
 
   getSalary() {
-    return this.rate * this.daysWorked;
+    if (this.coefficient) {
+      return this.rate * this.daysWorked * this.coefficient;
+    } else {
+      return this.rate * this.daysWorked;
+    }
   }
 }
 
@@ -113,6 +158,4 @@ class Auto {
   }
 }
 
-const bmw = new Auto('BMW', 4000, benzin); 
-
-
+const bmw = new Auto("BMW", 4000, benzin);
