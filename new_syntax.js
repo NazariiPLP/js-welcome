@@ -77,3 +77,42 @@ function sum(a = 10, b = 5) {
 console.log(sum()); // 15
 console.log(sum(3)); // 8
 console.log(sum(3, 7)); // 10
+
+/*
+Клас авто
+Клас паливо
+
+Задача: порахувати загальну вагу автомобіля (вага авто + вага палива)
+                                                         V*густина
+
+*/
+
+class Fuel {
+  constructor(volume, density) {
+    this.volume = volume;
+    this.density = density;
+  }
+
+  getWeight() {
+    return this.volume * this.density;
+  }
+}
+
+const benzin = new Fuel(50, 0.9);
+
+class Auto {
+  constructor(name, ownWeight, fuel) {
+    this.name = name;
+    this.ownWeight = ownWeight;
+    this.fuel = fuel;
+  }
+
+  // метод, який обчислює повну вагу авто: його власна вага ownWeight + вага палива
+  getFullWeight() {
+    return this.ownWeight + this.fuel.getWeight();
+  }
+}
+
+const bmw = new Auto('BMW', 4000, benzin); 
+
+
