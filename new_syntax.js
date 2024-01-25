@@ -1,51 +1,3 @@
-"use strict";
-/*
-
-class MyClass {
-    // методи класу
-    constructor() {
-
-    }
-
-    method1() {....}
-    method2() {....}
-    method3() {....}
-}
-
-const user = new MyClass()
-
-*/
-
-class User {
-  constructor(name, lastName, age) {
-    this.name = name;
-    this.lastName = lastName;
-    this.age = age;
-  }
-
-  getFullName() {
-    return `${this.name} ${this.lastName}`;
-  }
-}
-
-const user1 = new User("Alex", "Dane", 20);
-const user2 = new User("Dari", "Dane", 23);
-
-/*
-Правила класів
-
-1. constructor() при створені класу - обов'язковий
-2. Ми не можемо самостійно звернутися до конструктора
-3. Конструктор має бути тільки один 
-4. Як і у функіях-конструкторах назва класу записується з великої літери
-*/
-
-/* Задача
-Написати клас Worker.
-У працівника є ім'я, прізвище, ставка за робочий день і кількість відпрацьованих днів у цьому місяці
-Метод, який повертає зарплатню цього робітника за поточний місяць
-*/
-
 const MIN_ZP = 7100;
 const WORK_DAYS = 21;
 const MIN_RATE = MIN_ZP / WORK_DAYS;
@@ -65,15 +17,7 @@ class Worker {
     this.name = name;
     this.lastName = lastName;
 
-    if (typeof rate !== "number" || typeof daysWorked !== "number") {
-      throw new TypeError("Rate and days must be a number");
-    }
-
-    if (rate < 0) {
-      throw new RangeError("Rate must be a positive number");
-    }
-
-    this._rate = Number(rate.toFixed(2));
+    this.rate = Number(rate.toFixed(2)); // приватне поле
 
     if (daysWorked < 0 || daysWorked > 31) {
       throw new RangeError("Days must be in 0 to 31");
@@ -83,20 +27,59 @@ class Worker {
     this.coefficient = coefficient;
   }
 
-  setRate(value) {
-    if (typeof value !== "number" || typeof daysWorked !== "number") {
+  /*
+    Сеттер - метод для встановлення значення
+    Геттер - метод для отримання значення
+  */
+
+  set rate(newValue) {
+    // назва сеттеру - назва приватного поля БЕЗ знаку нижнього підкреслення
+    if (newValue < 0) {
+      throw new RangeError("Rate must be a positive number");
+    }
+    if (typeof newValue !== "number") {
       throw new TypeError("Rate must be a number");
     }
 
-    if (value < 0) {
-      throw new RangeError("Rate must be a positive number");
-    }
-
-    this._rate = value;
+    // АЛЕ всередині сеттеру ми працюємо з приватним полем
+    this._rate = newValue;
   }
 
-  getRate() {
+  get rate() {
+    // // назва геттеру - назва приватного поля БЕЗ знаку нижнього підкреслення
+    // АЛЕ всередині геттеру ми працюємо з приватним полем
     return this._rate;
+  }
+
+  set name(newValue) {
+    if (typeof newValue !== "string") {
+      throw new TypeError("Name be a string");
+    }
+    if (typeof newValue === "") {
+      throw new TypeError("Name must be a valid");
+    }
+
+
+    this._name = newValue;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set lastName(newValue) {
+    if (typeof newValue !== "string") {
+      throw new TypeError("Lastname be a string");
+    }
+    if (typeof newValue === "") {
+      throw new TypeError("Lastname must be a valid");
+    }
+
+    this._lastName = newValue;
+  }
+
+  get lastNname() {
+    return this._lastNname;
   }
 
   getSalary() {
@@ -108,54 +91,18 @@ class Worker {
   }
 }
 
-const worker1 = new Worker("Alex", "Fisherman", 3000, 20);
+const worker1 = new Worker("Alex", "Fisherman", 300, 20);
 const worker2 = new Worker("Savanah", "Loe");
 
-console.log(worker1.getSalary());
-
-/* Параметри за замовченням */
-
-function sum(a = 10, b = 5) {
-  return a + b;
-}
-
-console.log(sum()); // 15
-console.log(sum(3)); // 8
-console.log(sum(3, 7)); // 10
+console.log(worker1.rate); // getter
+worker1.rate = 500;
 
 /*
-Клас авто
-Клас паливо
-
-Задача: порахувати загальну вагу автомобіля (вага авто + вага палива)
-                                                         V*густина
-
+В середині класу геттери/сеттери працюють з приватними полями.
+А при зверненні до класу зовні 
 */
 
-class Fuel {
-  constructor(volume, density) {
-    this.volume = volume;
-    this.density = density;
-  }
-
-  getWeight() {
-    return this.volume * this.density;
-  }
-}
-
-const benzin = new Fuel(50, 0.9);
-
-class Auto {
-  constructor(name, ownWeight, fuel) {
-    this.name = name;
-    this.ownWeight = ownWeight;
-    this.fuel = fuel;
-  }
-
-  // метод, який обчислює повну вагу авто: його власна вага ownWeight + вага палива
-  getFullWeight() {
-    return this.ownWeight + this.fuel.getWeight();
-  }
-}
-
-const bmw = new Auto("BMW", 4000, benzin);
+/*
+Розробити геттери та сеттери для полів days та coefficient
+Передбачте перевірки в сеттерах
+*/
