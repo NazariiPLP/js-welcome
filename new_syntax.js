@@ -16,13 +16,7 @@ class Worker {
 
     this.name = name;
     this.lastName = lastName;
-
     this.rate = Number(rate.toFixed(2)); // приватне поле
-
-    if (daysWorked < 0 || daysWorked > 31) {
-      throw new RangeError("Days must be in 0 to 31");
-    }
-
     this.daysWorked = daysWorked;
     this.coefficient = coefficient;
   }
@@ -59,7 +53,6 @@ class Worker {
       throw new TypeError("Name must be a valid");
     }
 
-
     this._name = newValue;
   }
 
@@ -78,8 +71,30 @@ class Worker {
     this._lastName = newValue;
   }
 
-  get lastNname() {
-    return this._lastNname;
+  get lastName() {
+    return this._lastName;
+  }
+  
+  set daysWorked(newValue) {
+    if (newValue < 0 || newValue > 31) {
+      throw new RangeError("Days must be in 0 to 31");
+    }
+    this._daysWorked = newValue;
+  }
+
+  get daysWorked() {
+    return this._daysWorked;
+  }
+
+  set coefficient(newValue) {
+    if (newValue < 0) {
+      throw new RangeError("Coefficient must be a positive number");
+    }
+    this._coefficient = newValue;
+  }
+
+  get coefficient() {
+    return this._coefficient;
   }
 
   getSalary() {
