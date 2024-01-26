@@ -1,31 +1,61 @@
-class Test {
-  constructor(value1, value2) {
-    this.key1 = value1;
-    this.key2 = value2;
+/*
+Напишіть клас RangeValidator.
+
+У класі має бути 2 властивості: from, to
+from, to - числа, за типом даних.
+
+Завдання: реалізувати сеттери та геттери для обох властивостей
+Реалізувати такі обмеження: from не може бути більше ніж to
+
+Реалізувати звичайний метод getRange, який має повертати масив цілих чисел з цього діапазону
+
+const object1 = new RangeValidator(2, 5);
+object1.getRange(); // [2, 3, 4, 5]
+*/
+
+class RangeValidator {
+  constructor(from, to) {
+    this.from = from;
+    this.to = to;
   }
 
-  method() {
-    // тіло методу
+  set from(newValue) {
+    if (newValue >= this.to) {
+      throw new RangeError("From must be less than to");
+    }
+    this._from = newValue;
   }
 
-  // Варіант 2 для оголошення статичного методу - більш розповсюджений
-  static myStaticMethod(parameter) {
-    // тіло функції - щось робимо
-    console.log(parameter);
+  get from() {
+    return this._from;
+  }
+
+  set to(newValue) {
+    if (newValue <= this.from) {
+      throw new RangeError("To must be greater than from");
+    }
+    this._to = newValue;
+  }
+
+  get to() {
+    return this._to;
+  }
+
+  getRange() {
+    const arr = [this.from, this.to];
+    arr.shift();
+    for (let i = this.to - 1; i >= this.from; i--) {
+      arr.unshift(i);
+    }
+    return arr;
   }
 }
-  
-// Статичні методи - методи, якими можна скористатися не відбудовуючи екземпляр класу
-// Всередині статичних методів this не використову ється
 
-// Варіант 1 для оголошення статичного методу 
-// Test.myStaticMethod = function (parameter) {
- // тіло функції - щось ми робимо
-//   console.log(parameter);
-// }
+const object1 = new RangeValidator(2, 5);
+console.log(object1.getRange());
 
+const object2 = new RangeValidator(35, 42);
+console.log(object2.getRange());
 
-Test.myStaticMethod('123');
-
-const obj1 = new Test('test1', 'test2'); // створення нового екземпляру класу Test
-obj1.method();
+const object3 = new RangeValidator(105, 115);
+console.log(object3.getRange());
