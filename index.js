@@ -1,25 +1,65 @@
-class Animal {
-  constructor(color, nickname) {
-    this.nickname = nickname;
-    this.color = color;
+class User {
+  constructor(name, surname, age) {
+    this.name = name;
+    this.surname = surname;
+    this.age = age;
   }
 
-  eat() {
-    return `${this.nickname} is eating`;
-  }
-}
-
-const anim = new Animal("Tuzik", "black");
-
-// class Dog extends Animal - клас Собаки розширює клас Тварини (наслідує цей клас)
-class Dog extends Animal {
-  constructor(nickname, color) {
-    super(nickname, color);
-  }
-
-  gav() {
-    return `${this.nickname} gav-gav-gav`;
+  getFullName() {
+    return `${this.name} ${this.surname}`;
   }
 }
 
-const dog = new Dog('Tuzik', 'grey');
+class Moderator extends User {
+  constructor(name, surname, age) {
+    super(name, surname, age);
+  }
+
+  getFullName() {
+    return `${this.name} ${this.surname} ${this.age}`;
+  }
+
+  createPost(text) {
+    console.log("Post successfully created");
+  }
+
+  deletePost(id) {
+    console.log("Post successfully deleted");
+  }
+}
+
+class Admin extends Moderator {
+  constructor(name, surname, age, uniquePrefix) {
+    super(name, surname, age);
+    this.uniquePrefix = uniquePrefix;
+  }
+
+  getFullName() {
+    return `${this.name} ${this.surname}`;
+  }
+
+  makeModerator(userId) {
+    console.log("Moderator successfully sett!");
+  }
+
+  deleteModerator(userId) {
+    console.log("Moderator successfully deleted!");
+  }
+}
+
+class Support extends Admin {
+  constructor(name, uniquePrefix) {
+    super(name, null, null, uniquePrefix);
+  }
+
+  
+  getFullName() {
+    return `${this.name} ${this.uniquePrefix}`;
+  }
+
+}
+
+const user = new User("John", "Doe", 32);
+const moderator = new Moderator("Alex", "Krane", 45);
+const admin = new Admin("Jane", "Doe", 50, "Head of sales");
+const support = new Support("William", "Head of support");
