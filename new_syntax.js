@@ -1,123 +1,31 @@
-const MIN_ZP = 7100;
-const WORK_DAYS = 21;
-const MIN_RATE = MIN_ZP / WORK_DAYS;
-
-class Worker {
-  constructor(
-    name,
-    lastName,
-    rate = MIN_RATE,
-    daysWorked = WORK_DAYS,
-    coefficient
-  ) {
-    if (name === "" || lastName === "") {
-      throw new Error("Name and lastName must be valid");
-    }
-
-    this.name = name;
-    this.lastName = lastName;
-    this.rate = Number(rate.toFixed(2)); // приватне поле
-    this.daysWorked = daysWorked;
-    this.coefficient = coefficient;
+class Test {
+  constructor(value1, value2) {
+    this.key1 = value1;
+    this.key2 = value2;
   }
 
-  /*
-    Сеттер - метод для встановлення значення
-    Геттер - метод для отримання значення
-  */
-
-  set rate(newValue) {
-    // назва сеттеру - назва приватного поля БЕЗ знаку нижнього підкреслення
-    if (newValue < 0) {
-      throw new RangeError("Rate must be a positive number");
-    }
-    if (typeof newValue !== "number") {
-      throw new TypeError("Rate must be a number");
-    }
-
-    // АЛЕ всередині сеттеру ми працюємо з приватним полем
-    this._rate = newValue;
+  method() {
+    // тіло методу
   }
 
-  get rate() {
-    // // назва геттеру - назва приватного поля БЕЗ знаку нижнього підкреслення
-    // АЛЕ всередині геттеру ми працюємо з приватним полем
-    return this._rate;
-  }
-
-  set name(newValue) {
-    if (typeof newValue !== "string") {
-      throw new TypeError("Name be a string");
-    }
-    if (typeof newValue === "") {
-      throw new TypeError("Name must be a valid");
-    }
-
-    this._name = newValue;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  set lastName(newValue) {
-    if (typeof newValue !== "string") {
-      throw new TypeError("Lastname be a string");
-    }
-    if (typeof newValue === "") {
-      throw new TypeError("Lastname must be a valid");
-    }
-
-    this._lastName = newValue;
-  }
-
-  get lastName() {
-    return this._lastName;
-  }
-  
-  set daysWorked(newValue) {
-    if (newValue < 0 || newValue > 31) {
-      throw new RangeError("Days must be in 0 to 31");
-    }
-    this._daysWorked = newValue;
-  }
-
-  get daysWorked() {
-    return this._daysWorked;
-  }
-
-  set coefficient(newValue) {
-    if (newValue < 0) {
-      throw new RangeError("Coefficient must be a positive number");
-    }
-    this._coefficient = newValue;
-  }
-
-  get coefficient() {
-    return this._coefficient;
-  }
-
-  getSalary() {
-    if (this.coefficient) {
-      return this.rate * this.daysWorked * this.coefficient;
-    } else {
-      return this.rate * this.daysWorked;
-    }
+  // Варіант 2 для оголошення статичного методу - більш розповсюджений
+  static myStaticMethod(parameter) {
+    // тіло функції - щось робимо
+    console.log(parameter);
   }
 }
+  
+// Статичні методи - методи, якими можна скористатися не відбудовуючи екземпляр класу
+// Всередині статичних методів this не використову ється
 
-const worker1 = new Worker("Alex", "Fisherman", 300, 20);
-const worker2 = new Worker("Savanah", "Loe");
+// Варіант 1 для оголошення статичного методу 
+// Test.myStaticMethod = function (parameter) {
+ // тіло функції - щось ми робимо
+//   console.log(parameter);
+// }
 
-console.log(worker1.rate); // getter
-worker1.rate = 500;
 
-/*
-В середині класу геттери/сеттери працюють з приватними полями.
-А при зверненні до класу зовні 
-*/
+Test.myStaticMethod('123');
 
-/*
-Розробити геттери та сеттери для полів days та coefficient
-Передбачте перевірки в сеттерах
-*/
+const obj1 = new Test('test1', 'test2'); // створення нового екземпляру класу Test
+obj1.method();
