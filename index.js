@@ -143,7 +143,7 @@ class Student extends Person {
     // } else {
     //     return false;
     // }
-    
+
     // варіант 2
     // умова? умова true : умова false
     // const result = this.avarageGrade >= 90 ? true : false;
@@ -152,6 +152,31 @@ class Student extends Person {
     // варіант 3
     return this.avarageGrade >= 90;
   }
+
+  static calculateAvarageGrade(studentsArray) {
+    /* варіант 1
+    let sum = 0;
+    for(let i = 0; i < studentsArray.lenght ; i++) {
+      sum += studentsArray[i].avarageGrade;
+    }
+    
+    return sum / studentsArray.lenght;
+    */
+
+    /* варіант 2
+    studentsArray.forEach((student) => {
+      sum += student.avarageGrade;
+    });
+    */
+
+    /* варіант 3
+    const sum = studentsArray.reduce((accumulator, student) => accumulator + student.avarageGrade, 0);
+    
+    return sum / studentsArray.lenght;
+    */
+
+    
+  }
 }
 
 /*
@@ -159,15 +184,22 @@ class Student extends Person {
 2. Використовуємо 
 */
 
-const ivanov = new Person('Іванов Іван Іванович', 1985, 'male');
-const petrov = new Person('Петров Петро Петрович', 1985, 'non-binary');
+const ivanov = new Person("Іванов Іван Іванович", 1985, "male");
+const petrov = new Person("Петров Петро Петрович", 1985, "non-binary");
 
-console.log(ivanov.greeting());
+// console.log(ivanov.greeting());
 
-const student1 = new Student('Сидоров Сидр Сидорович', 1999, 'male', 2021, 'A12345', 95);
-const student2 = new Student('John Doe', 1999, 'male', 2021, 'A12346', 85);
-const student3 = new Student('Jane Doe', 2000, 'female', 2022, 'A13456', 70);
-const student4 = new Student('Josh Doe', 2000, 'male', 2021, 'A12456', 77);
+const student1 = new Student(
+  "Сидоров Сидр Сидорович",
+  1999,
+  "male",
+  2021,
+  "A12345",
+  95
+);
+const student2 = new Student("John Doe", 1999, "male", 2021, "A12346", 85);
+const student3 = new Student("Jane Doe", 2000, "female", 2022, "A13456", 70);
+const student4 = new Student("Josh Doe", 2000, "male", 2021, "A12456", 77);
 
 const students = [student1, student2, student3, student4];
 
@@ -178,3 +210,5 @@ const students = [student1, student2, student3, student4];
 Цей метод приймає масив екземпляру класу Students, обчислює та повертає як результат роботи середній бал усіх студентів
 
 */
+
+console.log(Student.calculateAvarageGrade(students));
