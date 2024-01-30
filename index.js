@@ -63,7 +63,7 @@ class Triangle extends Figure {
 
   set a(newValue) {
     if (newValue < 0) {
-      throw new RangeError("Side cannot br less than 0");
+      throw new RangeError("Side cannot be less than 0");
     }
 
     this._a = newValue;
@@ -75,7 +75,7 @@ class Triangle extends Figure {
 
   set b(newValue) {
     if (newValue < 0) {
-      throw new RangeError("Side cannot br less than 0");
+      throw new RangeError("Side cannot be less than 0");
     }
 
     this._b = newValue;
@@ -110,7 +110,7 @@ class Square extends Figure {
 
   set a(newValue) {
     if (newValue < 0) {
-      throw new RangeError("Side cannot br less than 0");
+      throw new RangeError("Side cannot be less than 0");
     }
 
     this._a = newValue;
@@ -125,8 +125,32 @@ class Square extends Figure {
   }
 }
 
+class Circle extends Figure {
+  constructor(radius) {
+    super(1);
+    this.radius = radius;
+  }
+
+  set radius(newValue) {
+    if (newValue < 0) {
+      throw new RangeError("Radius cannot be less than 0");
+    }
+
+    this._radius = newValue;
+  }
+
+  get radius() {
+    return this._radius;
+  }
+
+  getArea() {
+    return Math.PI * this.radius * this.radius;
+  }
+}
+
 const square = new Square(4);
 const triangle = new Triangle(5, 6, 45);
+const circle = new Circle(5);
 
 // Задача: напасати ОКРЕМУ ФУНКЦІЮ, яка буде приймати об'єкт певної фігури і буде викликати у цієї фігури метод getArea
 
@@ -145,7 +169,7 @@ function getFigureArea(figure) {
 1. Візуально код стає простішим
 2. Менше однакового коду
 3. Складні програми пишуться простіше
-4. Збільшується швидкість написання (достатньо швидко можемо прийти до мінімально працюючого пртототипу)
+4. Збільшується швидкість написання (достатньо швидко можемо прийти до мінімально працюючого протототипу)
 
 
 Недоліки
