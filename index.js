@@ -1,66 +1,64 @@
-const arr = [2, 4, 1, 3, 7, 3, 2, 1, 3, 5, 2, 8, 2, 4, 1];
+// LIFO
 
-// Задача: реалізувати функцію лінійного пошуку якогось значення в масиві
+// Last in - first out
 
-function linearSearch(array, value) {
-  // лінійна складність алгоритму
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === value) {
-      return i;
-    }
-  }
-  return -1;
-}
+// stack overflow - помилка, яка виникає при переповнені стеку
 
-// console.log(linearSearch(arr, 2));
+/*
 
-// Лінійна складність, коли Big 0, тобто, коли стіьки ітерацій (операцій), скільки у нас вхідних даних
+push - вставляємо елемент на вершину стеку
+pop - видалення елементу з вершини стеку і повернення видаленого елементу
+isEmpty - повертає true, якщо стек пустий // false - якщо стек не пустий
+pick - повертає останнній елемент, але нічого не робить із ним і не видаляє зі стеку
+*/
 
-// Квадратична складність
-
-// Задача: вивести таблицю множення
-
-function multyTable(limit) {
-  // квадратична складність
-  const table = [];
-  for (let i = 1; i <= limit; i++) {
-    for (let j = 1; j <= limit; j++) {
-      table.push(`${i} * ${j} = ${i * j}`);
-    }
+class Stack {
+  constructor(maxSize) {
+    this._maxSize = maxSize;
+    this._size = 0;
   }
 
-  return table;
-}
-
-multyTable(1); // 1 (1^2 = 1)
-multyTable(2); // 2 (2^2 = 2)
-multyTable(3); // 3 (3^2 = 9)
-
-// Квадратична складність, отримується кількість вхіжних даних в квадраті
-
-//  Логарифмічна складність ---> 100 вхідних даних припадає приблизно 6 операція
-
-const arr2 = [2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-function binarySearc(array, whatToFind) {
-  if (whatToFind > array[array.length - 1]) {
-    return -Infinity; // на випадок, якщо такого числа точно немає у масиві
+  get isEmpty() {
+    return this._size === 0;
   }
 
-  let start = 0;
-  let end = array.length - 1;
-  let middle = Math.round((start + end) / 2);
+  get size() {
+    return this._size;
+  }
 
-  while(true) {
-    if(array[middle] === whatToFind) {
-      return middle;
+  get maxSize() {
+    return this._maxSize;
+  }
+
+  set size(newValue) {
+    throw new Error("Access dennied");
+  }
+
+  set maxSize(newValue) {
+    throw new Error("Access dennied");
+  }
+
+  push(value) {
+    if (this.size >= this.maxSize) {
+      throw new Error("Stack overflow");
     }
-    if(array[middle] < whatToFind) {
-      start = middle; 
-      middle = Math.ceil((start + end) / 2);
-    } else {
-      end = middle;
-      middle = Math.ceil((start + end) / 2);
+    this[`_${this.size}`] = value;
+    this._size++;
+  }
+
+  pop() {
+    if (this.size > 0) {
+      const lastItem = this[`_${this.size - 1}`];
+      delete this[`_${this.size - 1}`];
+      this._size--;
+
+      return lastItem;
     }
+  }
+
+  pick() {
+    return this[`_${this.size - 1}`];
   }
 }
+
+const myStack = new Stack(4);
