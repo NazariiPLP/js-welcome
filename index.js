@@ -1,39 +1,44 @@
-// Queue
+/* Map (Карта, Мапа, Словник) 
 
-/*
+Зберігає пари "ключ: значення"
+Має розмір (size)
 
-1. Enqueue - вставляє елемент в кінець черги
-2. Dequeue - видаляє елемент з початку черги
+Відмінності від звичайного об'єкта:
+1.Запам'ятовує елементи в тому ж порядку, в якому ми їх додаємо
+2.Ключем може бути будь-який тип даних
+(Об'єкти (в тому числі функції) - передаються за посиланням)
 
+Ключ в Map має бути унікальним
 */
 
-class Queue {
-  constructor() {
-    this._head = 0;
-    this._tail = 0;
-  }
+const map = new Map();
 
-  get size() {
-    return this._tail - this._head;
-  }
+map.set(1, {});
+map.set("1", "value");
 
-  enqueue(value) {
-    // tail відповідає на питання, який елемент має бути останнім
-    this[this._tail] = value;
-    this._tail++;
-    return this.size;
-  }
+map.get(1); // {}
+map.get("1"); // value
 
-  dequeue() {
-    if(this.size > 0) {
-      const firstItem = this[this._head];
-      delete this[this._head];
-      this._head++;
-      return firstItem;
-    } else {
-      return undefined;
-    }
-  }
+map.has(1); // true
+map.has(20); // false
+
+const vocabulary = new Map();
+
+vocabulary.set('cat', 'кіт');
+vocabulary.set('dog','собака');
+vocabulary.set('eat', 'їсти');
+
+// Написати функцію, яка приймає рядок англійською мовою та перекладає цей рядок україською, використовуючи словник
+
+function translater(str, vocabulary) {
+  const arrayWords = str.toLowerCase().trim().split(' ');
+
+  // у нас є словник vocabulary
+  // перебрати arrayWords і переклад для кожного ангійського слова у масиві дістати з нашого словника 
+  translatedArray = arrayWords.map((word) => {
+    return vocabulary.get(word);
+  })
+  console.log(translatedArray.join(' '));
 }
 
-const queue = new Queue();
+translater('    Cat eat dog    ', vocabulary);
