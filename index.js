@@ -1,28 +1,16 @@
-// Set - множина, набір унікальних значень
+/* Задача 1
 
-const set = new Set();
+Дано масив: [2, 3, 3, 5, 6, 77, 77, 5, 1, 1, 12, 12, 13];
+Повернути масив без повторень
+*/
 
-// Set.prototype.add - додає новий елемент із заданим значенням у кінець об'єкта Set
+const arr = [2, 3, 3, 5, 6, 77, 77, 5, 1, 1, 12, 12, 13];
 
-set.add(1);
-set.add(4);
-set.add("hello");
+const arrSet = new Set(arr);
 
-// Set.prototype.has - перевіряє наявність елементу у множині
+const arrSorted = [...arrSet.values()];
 
-console.log(set.has(1)); // true
-console.log(set.has(12)); // false
+/* Задача 2
 
-// Set.prototype.delete - видаляє елемент з множини
 
-set.delete('hello');
-
-// Set.prototype.values - використовується для отримання ітератора, який повертає нам всі значеннях об'єкта Set
-
-const valuesIterator = set.values();
-
-valuesIterator.next().value; // 1
-valuesIterator.next().value; // 4
-valuesIterator.next().value; // undefined, done: true
-
-const arrayFromSet = [...set.values()];
+*/
