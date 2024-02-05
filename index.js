@@ -1,18 +1,23 @@
-// Задача: зберегти розклад занять, використовуючи дні тижні як ключі, а значеннями будуть списки занять, які відбуваються у відповідний день
+const user1 = {
+  firstName: "Alex",
+  lastName: "Doe",
+  id: 1,
+};
 
-const schedule = new Map();
+const user2 = {
+  firstName: "John",
+  lastName: "Doe",
+  id2: 2,
+};
 
-schedule.set("Понеділок", ["Математика", "Фізика"]);
-schedule.set("Вівторок", ["Англійська мова", "Всесвітня історія"]);
-schedule.set("Середа", ["Хімія", "Географія"]);
-schedule.set("Четвер", ["Зарубіжна літерату", "Юіологія"]);
-schedule.set("П'ятниця", ["Інформатика", "Фізкультура"]);
+const alexMessages = ["hi!", "I`m fine"];
+const johnMessages = ["hello", "How are you?"];
 
-// Отримання розкладу занять для певного дня
-console.log(schedule.get('Понеділок'));
+/*
+Задача: 
+за допомогою Map зв'язати користувача з його повідомленнями, щоб по ID користувача, можна було знайти його повідомлення
+*/
 
-// Перевірка чи є розклад для певного дня
-console.log(schedule.has('Субота'));
-
-// Отримання кількості днів в розкладі
-console.log(schedule.size);
+const messages = new Map();
+messages.set(user1.id, [alexMessages]);
+messages.set(user2.id, [johnMessages]);
