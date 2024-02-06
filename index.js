@@ -19,27 +19,29 @@ const monitor = {
 };
 
 
-// Є об'єкт юзера
+/*
+Існує 3 види деструктуризації у JS:
++ 1. Деструктиризація об'єктів
+2. Деструктиризація вхідних параметрів
++ 3. Деструктиризація масивів
+*/
+ 
+const arr = [1, 2, 3, 4, 5, 6];
+// const firstElement = arr[0];
 
-const user = {
-    name: 'John',
-    age: 30,
-    address: {
-        city: 'Kyiv',
-        country: 'Ukraine'
-    },
-    contacts: {
-        email: 'johndoe@gmail.com',
-        phone: '+380994875717'
-    }
+const [firstElement, seconfElement, ...restOfArray] = arr;
+
+function getFullName({firstName, lastName, ...restObjects}) { // все інше, окрім firstName, lastName - ігнорується
+    console.log(restObjects);
+    return`${firstName} ${lastName}`;
 }
 
-// Задача: з використанням деструктиризації отримати значення
-// name, city, email та phone
+const user2 = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 42,
+    geolocation: '42.24345312 56.11214545',
+    browser: 'Chrome'
+}
 
-const {name: userName, address: {city: userCity}, contacts: {email: userEmail, phone: userPhone}} = user
-
-console.log(userName);
-console.log(userCity);
-console.log(userEmail);
-console.log(userPhone);
+console.log(getFullName(user2));
