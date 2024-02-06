@@ -18,21 +18,28 @@ const monitor = {
   resolution: "4k",
 };
 
-// const height = monitor.sizes.height.value;
 
-// const { resolution, color: monitorColor } = monitor;
+// Є об'єкт юзера
 
-// console.log(resolution);
-// console.log(monitorColor);
+const user = {
+    name: 'John',
+    age: 30,
+    address: {
+        city: 'Kyiv',
+        country: 'Ukraine'
+    },
+    contacts: {
+        email: 'johndoe@gmail.com',
+        phone: '+380994875717'
+    }
+}
 
-// Задача: витягнути value для висоти та ширини монітору
+// Задача: з використанням деструктиризації отримати значення
+// name, city, email та phone
 
-const {sizes: {height: {value: heightValue, scale: heightSale}, width: {value: widthValue, scale: widthScale}}, refresh: {value: refreshValue}} = monitor;
+const {name: userName, address: {city: userCity}, contacts: {email: userEmail, phone: userPhone}} = user
 
-console.log(heightValue);
-console.log(widthValue);
-console.log(refreshValue);
-console.log(heightSale);
-console.log(widthScale);
-
-const {color, brightness, resolution, ...restOfMonitor } = monitor;
+console.log(userName);
+console.log(userCity);
+console.log(userEmail);
+console.log(userPhone);
