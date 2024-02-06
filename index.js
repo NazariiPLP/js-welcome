@@ -1,36 +1,38 @@
-/* Задача 1
-
-Дано масив: [2, 3, 3, 5, 6, 77, 77, 5, 1, 1, 12, 12, 13];
-Повернути масив без повторень
-*/
-
-const arr = [2, 3, 3, 5, 6, 77, 77, 5, 1, 1, 12, 12, 13];
-
-const arrSet = new Set(arr);
-
-const arrSorted = [...arrSet.values()];
-
-/* Задача 2
-
-Дано два масиви:
-
-const arr1 = [4, 3, 7, 5, -11];
-const arr2 = [3, 4, 8, 7, 2, -11]
-
-Повернути з функції масив, що складається з різниці двох масивів (тобто, тих значень, які не повторюються в обох масивах)
-
-// Логіка:
-Ви приймаєте 2 масиви
-Вам потрібно зробити новий масив, але там не повинно бути дублювань
-*/
-
-const arr1 = [4, 3, 7, 5, -11];
-const arr2 = [3, 4, 8, 7, 2, -11];
-
-const twoArraysWithoutDoubles = (array1, array2) => {
-  // const array3 = array1.concat(array2);
-  // const set = new Set(array3);
-  return [...new Set([...array1, ...array2]).values()];
+const monitor = {
+  sizes: {
+    height: {
+      value: 30,
+      scale: "cm // 1",
+    },
+    width: {
+      value: 50,
+      scale: "cm // 2",
+    },
+  },
+  brightness: 750,
+  refresh: {
+    value: 144,
+    scale: "Ggrc",
+  },
+  color: "black",
+  resolution: "4k",
 };
 
-const arrayWithoutDoubles = twoArraysWithoutDoubles(arr1, arr2);
+// const height = monitor.sizes.height.value;
+
+// const { resolution, color: monitorColor } = monitor;
+
+// console.log(resolution);
+// console.log(monitorColor);
+
+// Задача: витягнути value для висоти та ширини монітору
+
+const {sizes: {height: {value: heightValue, scale: heightSale}, width: {value: widthValue, scale: widthScale}}, refresh: {value: refreshValue}} = monitor;
+
+console.log(heightValue);
+console.log(widthValue);
+console.log(refreshValue);
+console.log(heightSale);
+console.log(widthScale);
+
+const {color, brightness, resolution, ...restOfMonitor } = monitor;
